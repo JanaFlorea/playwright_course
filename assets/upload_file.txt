@@ -1,0 +1,4 @@
+assets/upload_file.txt
+
+
+Soubor slouží jako demo soubor pro upload v Playwright
