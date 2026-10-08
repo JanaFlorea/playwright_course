@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="1.8252909999999682">
-<testsuite name="api_requests.spec.ts" timestamp="2026-10-08T09:08:58.283Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.247" errors="0">
-<testcase name="Get request" classname="api_requests.spec.ts" time="0.247">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="2.2892620000001043">
+<testsuite name="API_reusing_data.spec.ts" timestamp="2026-10-08T12:28:34.496Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.562" errors="0">
+<testcase name="Reusing Data between API Calls" classname="API_reusing_data.spec.ts" time="0.562">
 </testcase>
 </testsuite>
 </testsuites>
