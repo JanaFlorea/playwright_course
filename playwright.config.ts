@@ -35,7 +35,7 @@ export default defineConfig({
     timeout: 7_000, // * Maximální doba čekání assertu, default: 5_000 ms
   },
   use: {
-    actionTimeout: 7_000, // * Maximální doba trvání akce (např. click()), default: nenastaveno
+    // actionTimeout: 7_000, // * Maximální doba trvání akce (např. click()), default: nenastaveno
     navigationTimeout: 30_000, // * Maximální doba čekání na načtení stránky (goto()), default: nenastaveno
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
