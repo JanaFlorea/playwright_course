@@ -22,14 +22,28 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [
+    ["html"],
+    ["line"],
+    ["junit", { outputFile: "results.xml" }],
+    ["perfetto", { outputFile: "perfetto.json.gz" }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  timeout: 60_000, // * Maximální doba běhu testu, default: 30_000
+  globalTimeout: 1 * 60 * 60 * 1000, // * Maximální doba běhu všech testů, default: nenastaveno
+  expect: {
+    timeout: 7_000, // * Maximální doba čekání assertu, default: 5_000 ms
+  },
   use: {
+    actionTimeout: 7_000, // * Maximální doba trvání akce (např. click()), default: nenastaveno
+    navigationTimeout: 30_000, // * Maximální doba čekání na načtení stránky (goto()), default: nenastaveno
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    trace: "retain-on-failure",
+    screenshot: "only-on-failure",
+    video: "off",
   },
 
   /* Configure projects for major browsers */
@@ -38,6 +52,16 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
+    // {
+    //  name: "chromium:lowres",
+    //   use: {
+    //   ...devices["Desktop Chrome"],
+    //   viewport: {
+    //      width: 1024,
+    //      height: 768,
+    //     },
+    //  },
+    // },
 
     // {
     //   name: 'firefox',
@@ -57,7 +81,7 @@ export default defineConfig({
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
-    // },
+    //},
 
     /* Test against branded browsers. */
     // {
